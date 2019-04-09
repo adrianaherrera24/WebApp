@@ -6,6 +6,8 @@ package com.gestion.servlet;
  * and open the template in the editor.
  */
 
+import com.gestion.control.Control;
+import static com.gestion.control.Main.principal;
 import java.io.IOException;
 import static java.lang.System.out;
 import javax.servlet.ServletException;
@@ -20,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
+    
+    public static Control principal = Control.instance(); 
     
     private String user;
     private String pass;
@@ -45,7 +49,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
         //processRequest(request, response);
         
     }

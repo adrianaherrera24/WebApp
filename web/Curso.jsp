@@ -1,17 +1,15 @@
 <%-- 
-    Document   : Alumno
-    Created on : 07/04/2019, 01:35:24 PM
+    Document   : Curso
+    Created on : 09/04/2019, 11:24:07 AM
     Author     : Adriana Herrera
 --%>
 
-<%@page import="java.util.List"%>
-<%@page import="LogicaNegocio.Alumno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alumnos</title>
+        <title>Cursos</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
             h4{
@@ -22,29 +20,27 @@
         </style>
     </head>
     <body>
-        <h4>Módulo de Alumnos</h4>
+        <h4>Módulo de Cursos</h4>
         <div class="container">
-            <form action="Alumno" method="POST">
+            <form action="Curso" method="POST">
                 <div class="form-group">
-                  <label for="aCedula">Cédula</label>
-                  <input type="text" class="form-control" id="aCedula" placeholder="Cédula">
+                  <label for="aCodigo">Código</label>
+                  <input type="text" class="form-control" id="aCodigo" placeholder="Código">
                 </div>
                 <div class="form-group">
                   <label for="aNombre">Nombre</label>
                   <input type="text" class="form-control" id="aNombre" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                  <label for="aTelefono">Teléfono</label>
-                  <input type="text" class="form-control" id="aTelefono" placeholder="Teléfono">
+                  <label for="aCreditos">Créditos</label>
+                  <input type="text" class="form-control" id="aCreditos" placeholder="Créditos">
                 </div>
+                
                 <div class="form-group">
-                  <label for="aEmail">E-mail</label>
-                  <input type="email" class="form-control" id="aEmail" placeholder="name@example.com">
+                  <label for="aHoras">Horas Semanales</label>
+                  <input type="text" class="form-control" id="aHoras" placeholder="Horas">
                 </div>
-                <div class="form-group">
-                  <label for="aFecha">Fecha de Nacimiento</label>
-                  <input type="date" class="form-control" id="aFecha">
-                </div>
+                
                 <div class="form-group">
                   <label for="aCarrera">Carrera</label>
                     <select class="form-control" id="aCarrera">
@@ -52,6 +48,19 @@
                       <option>ADM</option>
                       <option>RRI</option>
                     </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="aCiclo">Ciclo</label>
+                    <select class="form-control" id="aCiclo">
+                      <option>1</option>
+                      <option>2</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="aAnno">Año</label>
+                  <input type="text" class="form-control" id="aAnno" placeholder="Año">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Guardar</button>

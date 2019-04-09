@@ -10,5 +10,9 @@ package com.gestion.control;
  * @author Adriana Herrera
  */
 public class Main {
-    public static Control principal = Control.instance(); 
+    public static Control principal; 
+    
+    public Main(){
+        principal = Control.instance(); 
+    }
 }
