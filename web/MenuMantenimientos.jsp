@@ -4,6 +4,8 @@
     Author     : Adriana Herrera
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="LogicaNegocio.Alumno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -35,13 +37,14 @@
         </style>
     </head>
     <body>
+        <form action="Mantenimientos" method="post">
         <nav class="navbar">
             <p class="navbar-brand">Mantenimientos</p>
         </nav>
         <!-- Items -->
         <nav class="nav nav-tabs">
             <li class="nav-item">
-               <a class="nav-link" href="Alumno.jsp">Alumnos</a> 
+                <button type="submit" class="nav-link" name="Alumno">Alumnos</button>  
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="Carrera.jsp">Carreras</a>
@@ -53,9 +56,10 @@
             <a class="nav-link" href="Profesor.jsp">Profesores</a>
             </li>
         </nav>
-        
+       </form>
         <table class="table">
         <thead>
+       
           <tr>
             <th scope="col">#</th>
             <th scope="col">X</th>
@@ -65,34 +69,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Thornton</td>
-            <td><a>Editar</a></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Thornton</td>
-            <td><a>Editar</a></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Thornton</td>
-            <td><a>Editar</a></td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Thornton</td>
-            <td><a class="otra">Editar</a></td>
-          </tr>
+        <%
+//            List<Alumno> alum = (List<Alumno>)request.getAttribute("alumno");
+//            for(Alumno a : alum) { 
+                
+        %>
+<!--          <tr class="info">
+            <td><//%=a.getId()%></td>
+            <td><//%=a.getNombre()%></td>
+            <td><//%=a.getCarrera()%></td>
+            <td><//%=a.getTelefono()   %></td>
+            <td><a>accion</a></td>
+          </tr>-->
+         <%
+           //}
+         %>
         </tbody>
       </table>
     </body>
