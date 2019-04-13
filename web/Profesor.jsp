@@ -4,6 +4,9 @@
     Author     : Adriana Herrera
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="LogicaNegocio.Profesor"%>
+<%@page import="LogicaNegocio.Profesor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +21,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         
         <style>
+            .navbar {
+                background-color: lightseagreen;
+            }
+            
             h4{
                 text-align: center;
                 font-size: 50px;
@@ -26,57 +33,88 @@
         </style>
     </head>
     <body>
-        <h4>Módulo de Profesores</h4>
+        <nav class="navbar">
+            <p class="navbar-brand"><h4>Módulo Profesores</h4></p>
+        </nav>
         
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                <%
+                    ArrayList<Profesor> list =(ArrayList<Profesor>)request.getAttribute("profesor"); 
+                    for(Profesor a : list) { 
+                %>
+                    <tr class="info">
+                       <td><%=a.getId()%></td>
+                       <td><%=a.getNombre()%></td>
+                       <td><%=a.getTelefono()%></td>
+                       <td><%=a.getEmail()%></td>
+                       <td><a>accion</a></td>
+                     </tr>
+                <%
+                   }
+                %>
+                </tbody>
+            </table>
+        </div>
+         
         
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Ingresar Profesor
-</button>
-
-<form action="Profesor" method="POST">
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style><b>Ingresar Profesor</b></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Ingresar Profesor
         </button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-            
-            <div class="form-group">
-              <label for="aCedula">Cédula</label>
-              <input type="text" class="form-control" id="aCedula" placeholder="Cédula">
-            </div>
-            <div class="form-group">
-              <label for="aNombre">Nombre</label>
-              <input type="text" class="form-control" id="aNombre" placeholder="Nombre">
-            </div>
-            <div class="form-group">
-              <label for="aTelefono">Teléfono</label>
-              <input type="text" class="form-control" id="aTelefono" placeholder="Teléfono">
-            </div>
-            <div class="form-group">
-              <label for="aEmail">E-mail</label>
-              <input type="email" class="form-control" id="aEmail" placeholder="name@example.com">
-            </div>
 
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <form action="profesor" method="POST">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style><b>Ingresar Profesor</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container">
 
-      </div>
-    </div>
-  </div>
-</div>
-        
-            </form>
+                        <div class="form-group">
+                          <label for="aCedula">Cédula</label>
+                          <input type="text" class="form-control" id="aCedula" placeholder="Cédula" name="cedula">
+                        </div>
+                        <div class="form-group">
+                          <label for="aNombre">Nombre</label>
+                          <input type="text" class="form-control" id="aNombre" placeholder="Nombre" name="nombre">
+                        </div>
+                        <div class="form-group">
+                          <label for="aTelefono">Teléfono</label>
+                          <input type="text" class="form-control" id="aTelefono" placeholder="Teléfono" name="telefono">
+                        </div>
+                        <div class="form-group">
+                          <label for="aEmail">E-mail</label>
+                          <input type="email" class="form-control" id="aEmail" placeholder="name@example.com" name="email">
+                        </div>
 
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
     </body>
 </html>

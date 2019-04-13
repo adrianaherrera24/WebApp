@@ -26,14 +26,6 @@
             .nav{
                 background-color: lightseagreen;
             }
-            a{
-                font-family: sans-serif;
-                text-decoration: none;
-                color: black;
-            }
-            a:hover{
-                background-color: lightskyblue;
-            }
         </style>
     </head>
     <body>
@@ -47,43 +39,16 @@
                 <button type="submit" class="nav-link" name="Alumno">Alumnos</button>  
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Carrera.jsp">Carreras</a>
+                <button type="submit" class="nav-link" name="Carrera">Carreras</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Curso.jsp">Cursos</a>
+                <button type="submit" class="nav-link" name="Curso">Cursos</button>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="Profesor.jsp">Profesores</a>
+                <button type="submit" class="nav-link" name="Profesor">Profesores</button>
             </li>
         </nav>
        </form>
-        <table class="table">
-        <thead>
-       
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">X</th>
-            <th scope="col">Y</th>
-            <th scope="col">Z</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-        <%
-//            List<Alumno> alum = (List<Alumno>)request.getAttribute("alumno");
-//            for(Alumno a : alum) { 
-                
-        %>
-<!--          <tr class="info">
-            <td><//%=a.getId()%></td>
-            <td><//%=a.getNombre()%></td>
-            <td><//%=a.getCarrera()%></td>
-            <td><//%=a.getTelefono()   %></td>
-            <td><a>accion</a></td>
-          </tr>-->
-         <%
-           //}
-         %>
         </tbody>
       </table>
     </body>

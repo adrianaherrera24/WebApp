@@ -4,18 +4,24 @@
     Author     : Adriana Herrera
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="LogicaNegocio.Carrera"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Carrera</title>
+        <title>Carreras</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <style>
+            .navbar {
+                background-color: lightseagreen;
+            }
+            
             h4{
                 text-align: center;
                 font-size: 50px;
@@ -24,13 +30,45 @@
         </style>
     </head>
     <body>
-        <h4>Módulo de Carreras</h4>
+        <nav class="navbar">
+            <p class="navbar-brand"><h4>Módulo Carreras</h4></p>
+        </nav>
+        
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                <%
+                    ArrayList<Carrera> list =(ArrayList<Carrera>)request.getAttribute("carrera"); 
+                    for(Carrera a : list) {           
+                %>
+                    <tr class="info">
+                        <td><%=a.getId()%></td>
+                        <td><%=a.getNombre()%></td>
+                        <td><%=a.getTitulo() %></td>
+                        <td><a>accion</a></td>
+                    </tr>
+                <%
+                   }
+                %>
+                </tbody>
+            </table>
+        </div>
+        
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Ingresar Carrera
         </button>
-       <form action="Carrera" method="POST"> 
-  
+       
+        <form action="carrera" method="POST">
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -68,7 +106,6 @@
                 </div>
               </div>
             </div>
-            
        </form>
     </body>
 </html>

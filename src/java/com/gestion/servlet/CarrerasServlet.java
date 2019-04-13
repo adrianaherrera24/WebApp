@@ -7,10 +7,9 @@ package com.gestion.servlet;
 
 import AccesoDatos.GlobalException;
 import AccesoDatos.NoDataException;
-import LogicaNegocio.Alumno;
+import LogicaNegocio.Carrera;
 import com.gestion.control.Control;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,14 +22,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Adriana Herrera
  */
-@WebServlet(urlPatterns = {"/alumno"})
-public class AlumnosServlet extends HttpServlet {
-    
+@WebServlet(urlPatterns = {"/carrera"})
+public class CarrerasServlet extends HttpServlet {
+
     Control principal_ = Control.instance();
-            
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getServletPath().equals("/alumno"))
+        if(request.getServletPath().equals("/carrera"))
             this.agregar(request,response);
     }
 
@@ -44,26 +43,21 @@ public class AlumnosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
-
+    
     public void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException{
         try {
-            Alumno alumno = new Alumno();
-            alumno.setId(request.getParameter("cedula"));
-            alumno.setNombre(request.getParameter("nombre"));
-            alumno.setTelefono(request.getParameter("telefono"));
-            alumno.setEmail(request.getParameter("email"));
-            alumno.setFechaNacimiento(request.getParameter("fecha"));
-            alumno.setCarrera(request.getParameter("carrera"));
-            alumno.setRol("ALUM");
-            principal_.opcionesAlumnos("AGREGAR", alumno);
+            Carrera nuevaCarrera = new Carrera();
+            nuevaCarrera.setId(request.getParameter("codigo"));
+            nuevaCarrera.setNombre(request.getParameter("nombre"));
+            nuevaCarrera.setTitulo(request.getParameter("titulo"));
+            principal_.opcionesCarreras("AGREGAR", nuevaCarrera);
             response.sendRedirect("/MenuMantenimientos.jsp");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";

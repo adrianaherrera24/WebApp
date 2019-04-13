@@ -7,10 +7,11 @@ package com.gestion.servlet;
 
 import AccesoDatos.GlobalException;
 import AccesoDatos.NoDataException;
-import LogicaNegocio.Alumno;
+import LogicaNegocio.Carrera;
+import LogicaNegocio.Curso;
 import com.gestion.control.Control;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,14 +24,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Adriana Herrera
  */
-@WebServlet(urlPatterns = {"/alumno"})
-public class AlumnosServlet extends HttpServlet {
-    
+@WebServlet(urlPatterns = {"/curso"})
+public class CursosServlet extends HttpServlet {
+
     Control principal_ = Control.instance();
-            
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getServletPath().equals("/alumno"))
+        if(request.getServletPath().equals("/curso"))
             this.agregar(request,response);
     }
 
@@ -44,26 +45,24 @@ public class AlumnosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
-
+    
     public void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException{
         try {
-            Alumno alumno = new Alumno();
-            alumno.setId(request.getParameter("cedula"));
-            alumno.setNombre(request.getParameter("nombre"));
-            alumno.setTelefono(request.getParameter("telefono"));
-            alumno.setEmail(request.getParameter("email"));
-            alumno.setFechaNacimiento(request.getParameter("fecha"));
-            alumno.setCarrera(request.getParameter("carrera"));
-            alumno.setRol("ALUM");
-            principal_.opcionesAlumnos("AGREGAR", alumno);
+            Curso nuevoCurso = new Curso();
+            nuevoCurso.setId(request.getParameter("codigo"));
+            nuevoCurso.setNombre(request.getParameter("nombre"));
+            nuevoCurso.setCreditos(Integer.parseInt(request.getParameter("creditos")));
+            nuevoCurso.setHorasSemanales(Integer.parseInt(request.getParameter("horas")));
+            nuevoCurso.setCarrera(request.getParameter("carrera"));
+            nuevoCurso.setCiclo(Integer.parseInt(request.getParameter("ciclo")));
+            nuevoCurso.setAnno(request.getParameter("anno"));
+            principal_.opcionesCursos("AGREGAR", nuevoCurso);
             response.sendRedirect("/MenuMantenimientos.jsp");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
     @Override
     public String getServletInfo() {
         return "Short description";

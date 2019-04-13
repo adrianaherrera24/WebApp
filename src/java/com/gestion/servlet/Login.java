@@ -7,7 +7,6 @@ package com.gestion.servlet;
  */
 
 import com.gestion.control.Control;
-import static com.gestion.control.Main.principal;
 import java.io.IOException;
 import static java.lang.System.out;
 import javax.servlet.ServletException;
@@ -49,7 +48,6 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
         //processRequest(request, response);
         
     }
@@ -67,7 +65,7 @@ public class Login extends HttpServlet {
         
         if(user != null && !"".equals(pass)){ /// Si los espacios estan llenos
                if(user.equals("aherrera") && pass.equals("123")){ /// Validando usuario por defecto
-                   request.getRequestDispatcher("MenuMantenimientos.jsp").forward(request, response); // Si se cumple se direge a la siguiente pagina
+                   response.sendRedirect("MenuMantenimientos.jsp"); // Si se cumple se direge a la siguiente pagina
                }else{ /// Si no son correctos vuelve al login
                    out.println("Datos Incorrectos!");
                    response.sendRedirect("Login.jsp");

@@ -8,11 +8,15 @@ package com.gestion.servlet;
 import AccesoDatos.GlobalException;
 import AccesoDatos.NoDataException;
 import LogicaNegocio.Alumno;
+import LogicaNegocio.Carrera;
+import LogicaNegocio.Curso;
+import LogicaNegocio.Profesor;
 import com.gestion.control.Control;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +33,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/Mantenimientos"})
 public class MantenimientosServlet extends HttpServlet {
 
-    Control principal;
+    Control principal = Control.instance();
+    List<Alumno> alumnos = new ArrayList<>();
+    List<Carrera> carreras = new ArrayList<>();
+    List<Curso> cursos = new ArrayList<>();
+    List<Profesor> profesores = new ArrayList<>();
+    
+    String name;
             
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -58,64 +68,58 @@ public class MantenimientosServlet extends HttpServlet {
        
         
          processRequest(request,response);
- 
-             
-     /*   try {
-            List<String> supplierNames = new ArrayList<>();
-            supplierNames.add("sup1");
-            supplierNames.add("sup2");
-            supplierNames.add("sup3");
-            
-            request.setAttribute("alumno", principal.opcionesAlumnos("LISTAR"));
-            request.getRequestDispatcher("/Alumno.jsp").forward(request, response);
-           // processRequest(request, response);
-        } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
-         
-         
-          
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-       Alumno a = new Alumno("a", "a", "a", "a", "2001-02-02", "a", "a");
-       Alumno b = new Alumno("b", "b", "b", "a", "2001-02-02", "a", "a");
-       Alumno c = new Alumno("c", "c", "c", "a", "2001-02-02", "a", "a");
-       List<Alumno> alumnos = new ArrayList<>();
-//       alumnos.add(a);
-//       alumnos.add(b);
-//       alumnos.add(c);
-       
-       principal = Control.instance();
-       
-        try {
-            alumnos = principal.opcionesAlumnos("Listar");
-        } catch (GlobalException ex) {
-            Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoDataException ex) {
-            Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-       request.setAttribute("alumno", alumnos);
-       request.getRequestDispatcher("/Alumno.jsp").forward(request, response);
-          
-            
+        Enumeration e = request.getParameterNames();
         
-       
-    } 
-    
-  /*  public void no(){
-        try {
-            alumnos = principal.opcionesAlumnos("LISTAR");
-            System.out.println(alumnos);
-        } catch (GlobalException | NoDataException ex) {
-            Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
+        while(e.hasMoreElements()){
+            Object o = e.nextElement();
+            name = (String) o;
+            out.println(name);
         }
-    }*/
-
+        
+        if(null != name)switch (name) {
+            case "Carrera":
+                try {
+                    carreras = principal.opcionesCarreras("Listar");
+                    request.setAttribute("carrera", carreras);
+                    request.getRequestDispatcher("/Carrera.jsp").forward(request, response);
+                } catch (GlobalException | NoDataException ex) {
+                    Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }   break;
+            case "Alumno":
+                try {
+                    alumnos = principal.opcionesAlumnos("Listar");
+                } catch (GlobalException | NoDataException ex) {
+                    Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }   request.setAttribute("alumno", alumnos);
+                request.getRequestDispatcher("/Alumno.jsp").forward(request, response);
+                break;
+            case "Curso":
+                try {
+                    cursos = principal.opcionesCursos("Listar");
+                } catch (GlobalException | NoDataException ex) {
+                    Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }   request.setAttribute("curso", cursos);
+                request.getRequestDispatcher("/Curso.jsp").forward(request, response);
+                break;
+            case "Profesor":
+                try {
+                    profesores = principal.opcionesProfesores("Listar");
+                } catch (GlobalException | NoDataException ex) {
+                    Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }   request.setAttribute("profesor", profesores);
+                request.getRequestDispatcher("/Profesor.jsp").forward(request, response);
+                break;
+            default:
+                break;
+        }
+    } 
+  
     @Override
     public String getServletInfo() {
         return "Short description";

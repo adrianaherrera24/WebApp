@@ -7,10 +7,9 @@ package com.gestion.servlet;
 
 import AccesoDatos.GlobalException;
 import AccesoDatos.NoDataException;
-import LogicaNegocio.Alumno;
+import LogicaNegocio.Profesor;
 import com.gestion.control.Control;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,14 +22,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Adriana Herrera
  */
-@WebServlet(urlPatterns = {"/alumno"})
-public class AlumnosServlet extends HttpServlet {
-    
+@WebServlet(urlPatterns = {"/profesor"})
+public class ProfesoresServlet extends HttpServlet {
+
     Control principal_ = Control.instance();
-            
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getServletPath().equals("/alumno"))
+        if(request.getServletPath().equals("/profesor"))
             this.agregar(request,response);
     }
 
@@ -44,26 +43,23 @@ public class AlumnosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
-
+    
     public void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException{
         try {
-            Alumno alumno = new Alumno();
-            alumno.setId(request.getParameter("cedula"));
-            alumno.setNombre(request.getParameter("nombre"));
-            alumno.setTelefono(request.getParameter("telefono"));
-            alumno.setEmail(request.getParameter("email"));
-            alumno.setFechaNacimiento(request.getParameter("fecha"));
-            alumno.setCarrera(request.getParameter("carrera"));
-            alumno.setRol("ALUM");
-            principal_.opcionesAlumnos("AGREGAR", alumno);
+            Profesor nuevoProfesor = new Profesor();
+            nuevoProfesor.setId(request.getParameter("cedula"));
+            nuevoProfesor.setNombre(request.getParameter("nombre"));
+            nuevoProfesor.setTelefono(request.getParameter("telefono"));
+            nuevoProfesor.setEmail(request.getParameter("email"));
+            nuevoProfesor.setRol("PROF");
+            principal_.opcionesProfesores("AGREGAR", nuevoProfesor);
             response.sendRedirect("/MenuMantenimientos.jsp");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";
