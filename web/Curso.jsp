@@ -28,6 +28,14 @@
                 font-size: 50px;
                 margin-top: 5px;
             }
+            
+            .boton1{
+                background-color: lightblue;
+            }
+            
+            .boton2{
+                background-color: lightcoral;
+            }
         </style>
     </head>
     <body>
@@ -63,7 +71,7 @@
                         <td><%=a.getCarrera() %></td>
                         <td><%=a.getCiclo() %></td>
                         <td><%=a.getAnno() %></td>
-                        <td><a>accion</a></td>
+                        <td><button class="btn boton1">Editar</button>&nbsp;<button class="btn boton2">Eliminar</button></td>
                     </tr>
                 <%
                    }
@@ -93,25 +101,25 @@
 
                         <div class="form-group">
                           <label for="aCodigo">Código</label>
-                          <input type="text" class="form-control" id="aCodigo" placeholder="Código">
+                          <input type="text" class="form-control" placeholder="Código" name="codigo">
                         </div>
                         <div class="form-group">
                           <label for="aNombre">Nombre</label>
-                          <input type="text" class="form-control" id="aNombre" placeholder="Nombre">
+                          <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                         </div>
                         <div class="form-group">
                           <label for="aCreditos">Créditos</label>
-                          <input type="text" class="form-control" id="aCreditos" placeholder="Créditos">
+                          <input type="text" class="form-control" placeholder="Créditos" name="creditos">
                         </div>
 
                         <div class="form-group">
                           <label for="aHoras">Horas Semanales</label>
-                          <input type="text" class="form-control" id="aHoras" placeholder="Horas">
+                          <input type="text" class="form-control" placeholder="Horas" name="horas">
                         </div>
 
                         <div class="form-group">
                           <label for="aCarrera">Carrera</label>
-                            <select class="form-control" id="aCarrera">
+                            <select class="form-control" name="carrera">
                               <option>EIF</option>
                               <option>ADM</option>
                               <option>RRI</option>
@@ -120,7 +128,7 @@
 
                         <div class="form-group">
                           <label for="aCiclo">Ciclo</label>
-                            <select class="form-control" id="aCiclo">
+                            <select class="form-control" name="ciclo">
                               <option>1</option>
                               <option>2</option>
                             </select>
@@ -128,10 +136,8 @@
 
                         <div class="form-group">
                           <label for="aAnno">Año</label>
-                          <input type="text" class="form-control" id="aAnno" placeholder="Año">
+                          <input type="text" class="form-control" placeholder="Año" name="anno">
                         </div>
-
-
                     </div>
                   </div>
                   <div class="modal-footer">

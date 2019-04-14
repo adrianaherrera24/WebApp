@@ -10,7 +10,6 @@ import AccesoDatos.NoDataException;
 import LogicaNegocio.Alumno;
 import com.gestion.control.Control;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -30,8 +29,7 @@ public class AlumnosServlet extends HttpServlet {
             
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getServletPath().equals("/alumno"))
-            this.agregar(request,response);
+            this.agregarAlumno(request,response);
     }
 
     @Override
@@ -46,8 +44,10 @@ public class AlumnosServlet extends HttpServlet {
         processRequest(request, response);
         
     }
+    
+    
 
-    public void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void agregarAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException{
         try {
             Alumno alumno = new Alumno();
             alumno.setId(request.getParameter("cedula"));
@@ -58,7 +58,7 @@ public class AlumnosServlet extends HttpServlet {
             alumno.setCarrera(request.getParameter("carrera"));
             alumno.setRol("ALUM");
             principal_.opcionesAlumnos("AGREGAR", alumno);
-            response.sendRedirect("/MenuMantenimientos.jsp");
+            response.sendRedirect("MenuMantenimientos.jsp");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

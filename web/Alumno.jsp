@@ -28,6 +28,15 @@
                 font-size: 50px;
                 margin-top: 5px;
             }
+            
+            .boton1{
+                background-color: lightblue;
+            }
+            
+            .boton2{
+                background-color: lightcoral;
+            }
+            
         </style>
     </head>
     <body>
@@ -61,7 +70,7 @@
                         <td><%=a.getEmail()%></td>
                         <td><%=a.getFechaNacimiento() %></td>
                         <td><%=a.getCarrera()%></td>
-                        <td><a>accion</a></td>
+                        <td><a type="button" class="btn boton1">Editar</a>&nbsp;<button class="btn boton2">Eliminar</button></td>
                     </tr>
                 <%
                    }

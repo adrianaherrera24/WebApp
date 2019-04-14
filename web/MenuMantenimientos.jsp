@@ -26,30 +26,37 @@
             .nav{
                 background-color: lightseagreen;
             }
+            
+            .nav-link{
+                background-color: lightseagreen;
+            }
+            
+            .nav-link:hover{
+                background-color: deepskyblue;
+            }
         </style>
     </head>
     <body>
-        <form action="Mantenimientos" method="post">
-        <nav class="navbar">
-            <p class="navbar-brand">Mantenimientos</p>
-        </nav>
-        <!-- Items -->
-        <nav class="nav nav-tabs">
-            <li class="nav-item">
-                <button type="submit" class="nav-link" name="Alumno">Alumnos</button>  
-            </li>
-            <li class="nav-item">
-                <button type="submit" class="nav-link" name="Carrera">Carreras</button>
-            </li>
-            <li class="nav-item">
-                <button type="submit" class="nav-link" name="Curso">Cursos</button>
-            </li>
-            <li class="nav-item">
-                <button type="submit" class="nav-link" name="Profesor">Profesores</button>
-            </li>
-        </nav>
+        <form action="Mantenimientos" method="POST">
+            <nav class="navbar">
+                <p class="navbar-brand">Mantenimientos</p>
+            </nav>
+            
+            <!-- Items -->
+            <nav class="nav nav-tabs">
+                <li class="nav-item">
+                    <button type="submit" class="nav-link" name="Alumno">Alumnos</button>  
+                </li>
+                <li class="nav-item">
+                    <button type="submit" class="nav-link" name="Carrera">Carreras</button>
+                </li>
+                <li class="nav-item">
+                    <button type="submit" class="nav-link" name="Curso">Cursos</button>
+                </li>
+                <li class="nav-item">
+                    <button type="submit" class="nav-link" name="Profesor">Profesores</button>
+                </li>
+            </nav>
        </form>
-        </tbody>
-      </table>
     </body>
 </html>

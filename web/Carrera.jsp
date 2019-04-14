@@ -27,6 +27,14 @@
                 font-size: 50px;
                 margin-top: 5px;
             }
+            
+            .boton1{
+                background-color: lightblue;
+            }
+            
+            .boton2{
+                background-color: lightcoral;
+            }
         </style>
     </head>
     <body>
@@ -54,7 +62,7 @@
                         <td><%=a.getId()%></td>
                         <td><%=a.getNombre()%></td>
                         <td><%=a.getTitulo() %></td>
-                        <td><a>accion</a></td>
+                        <td><button class="btn boton1">Editar</button>&nbsp;<button class="btn boton2">Eliminar</button></td>
                     </tr>
                 <%
                    }
@@ -84,15 +92,15 @@
 
                 <div class="form-group">
                   <label for="aCodigo">Código</label>
-                  <input type="text" class="form-control" id="aCodigo" placeholder="Código">
+                  <input type="text" class="form-control" placeholder="Código" name="codigo">
                 </div>
                 <div class="form-group">
                   <label for="aNombre">Nombre</label>
-                  <input type="text" class="form-control" id="aNombre" placeholder="Nombre">
+                  <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                 </div>
                 <div class="form-group">
                   <label for="aTitulo">Título</label>
-                  <input type="text" class="form-control" id="aTitulo" placeholder="Título">
+                  <input type="text" class="form-control" placeholder="Título" name="titulo">
                 </div>
                 <div class="form-group">
                     <button type="button" class="btn btn-success" name="aEditar" >Editar Cursos</button>

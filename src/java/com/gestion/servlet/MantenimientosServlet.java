@@ -86,17 +86,19 @@ public class MantenimientosServlet extends HttpServlet {
             case "Carrera":
                 try {
                     carreras = principal.opcionesCarreras("Listar");
-                    request.setAttribute("carrera", carreras);
-                    request.getRequestDispatcher("/Carrera.jsp").forward(request, response);
                 } catch (GlobalException | NoDataException ex) {
                     Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }   break;
+                }   
+                request.setAttribute("carrera", carreras);
+                request.getRequestDispatcher("/Carrera.jsp").forward(request, response);
+                break;
             case "Alumno":
                 try {
                     alumnos = principal.opcionesAlumnos("Listar");
                 } catch (GlobalException | NoDataException ex) {
                     Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }   request.setAttribute("alumno", alumnos);
+                }   
+                request.setAttribute("alumno", alumnos);
                 request.getRequestDispatcher("/Alumno.jsp").forward(request, response);
                 break;
             case "Curso":
@@ -104,7 +106,8 @@ public class MantenimientosServlet extends HttpServlet {
                     cursos = principal.opcionesCursos("Listar");
                 } catch (GlobalException | NoDataException ex) {
                     Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }   request.setAttribute("curso", cursos);
+                }   
+                request.setAttribute("curso", cursos);
                 request.getRequestDispatcher("/Curso.jsp").forward(request, response);
                 break;
             case "Profesor":
@@ -112,7 +115,8 @@ public class MantenimientosServlet extends HttpServlet {
                     profesores = principal.opcionesProfesores("Listar");
                 } catch (GlobalException | NoDataException ex) {
                     Logger.getLogger(MantenimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }   request.setAttribute("profesor", profesores);
+                }   
+                request.setAttribute("profesor", profesores);
                 request.getRequestDispatcher("/Profesor.jsp").forward(request, response);
                 break;
             default:

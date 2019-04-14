@@ -29,7 +29,6 @@ public class CarrerasServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getServletPath().equals("/carrera"))
             this.agregar(request,response);
     }
 
@@ -52,7 +51,6 @@ public class CarrerasServlet extends HttpServlet {
             nuevaCarrera.setNombre(request.getParameter("nombre"));
             nuevaCarrera.setTitulo(request.getParameter("titulo"));
             principal_.opcionesCarreras("AGREGAR", nuevaCarrera);
-            response.sendRedirect("/MenuMantenimientos.jsp");
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -30,6 +30,14 @@
                 font-size: 50px;
                 margin-top: 5px;
             }
+            
+            .boton1{
+                background-color: lightblue;
+            }
+            
+            .boton2{
+                background-color: lightcoral;
+            }
         </style>
     </head>
     <body>
@@ -59,7 +67,7 @@
                        <td><%=a.getNombre()%></td>
                        <td><%=a.getTelefono()%></td>
                        <td><%=a.getEmail()%></td>
-                       <td><a>accion</a></td>
+                       <td><button class="btn boton1">Editar</button>&nbsp;<button class="btn boton2">Eliminar</button></td>
                      </tr>
                 <%
                    }
@@ -90,19 +98,19 @@
 
                         <div class="form-group">
                           <label for="aCedula">Cédula</label>
-                          <input type="text" class="form-control" id="aCedula" placeholder="Cédula" name="cedula">
+                          <input type="text" class="form-control" placeholder="Cédula" name="cedula">
                         </div>
                         <div class="form-group">
                           <label for="aNombre">Nombre</label>
-                          <input type="text" class="form-control" id="aNombre" placeholder="Nombre" name="nombre">
+                          <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                         </div>
                         <div class="form-group">
                           <label for="aTelefono">Teléfono</label>
-                          <input type="text" class="form-control" id="aTelefono" placeholder="Teléfono" name="telefono">
+                          <input type="text" class="form-control" placeholder="Teléfono" name="telefono">
                         </div>
                         <div class="form-group">
                           <label for="aEmail">E-mail</label>
-                          <input type="email" class="form-control" id="aEmail" placeholder="name@example.com" name="email">
+                          <input type="email" class="form-control" placeholder="name@example.com" name="email">
                         </div>
 
                     </div>
